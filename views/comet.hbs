@@ -1,0 +1,35 @@
+<h3>long polling</h3>
+<button id="start-polling">开启</button>
+<div id="result"></div>
+
+<h3>streaming</h3>
+<button id="start-jsonp">发送请求</button>
+<div id="result2"></div>
+
+<script>
+	// firefox正常，chrome只是最后才输出，ie拒绝访问
+	function createClient(url, process, finished){
+		var xhr = new XMLHttpRequest(), received = 0;
+		xhr.open('GET', url, true);
+		xhr.onreadystatechange = function(){
+			var result;
+			if(xhr.readyState == 3){
+				result = xhr.responseText.slice(received);
+				received += result.length;
+				console.log(received);
+
+				process(result);
+			} else if(xhr.readyState == 4) {
+				finished(xhr.responseText);
+			}
+		}
+		xhr.send(null);
+		return xhr;
+	}
+
+	var client = createClient("http://localhost:3000/stream", function(data){
+		console.log("Received:"+data);
+	}, function(data){
+		console.log("Done!");
+	});
+</script>

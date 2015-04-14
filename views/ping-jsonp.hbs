@@ -1,0 +1,30 @@
+<h3>image ping</h3>
+<button id="start-ping">发送请求</button>
+<div id="result"></div>
+
+<h3>jsonp</h3>
+<button id="start-jsonp">发送请求</button>
+<div id="result2"></div>
+
+<script>
+	// image ping
+	var btn = document.querySelector("#start-ping");
+	btn.onclick = function(){
+		var img = new Image();
+		img.onload = img.onerror = function(obj){
+			document.querySelector("#result").innerHTML = "finished";
+		};
+		img.src = "http://localhost:3000/img?r="+Math.random();
+	};
+
+	// jsonp
+	var btn2 = document.querySelector("#start-jsonp");
+	btn2.onclick = function(){
+		var script = document.createElement("script");
+		script.src = "http://localhost:3000/jsonp";
+		document.body.insertBefore(script, document.body.firstChild);
+	};
+	function pagefunc(num){
+		document.querySelector("#result2").innerHTML = "我从服务器获得了一个随机数："+num;
+	}
+</script>
