@@ -3,11 +3,42 @@
 <div id="result"></div>
 
 <h3>streaming</h3>
-<button id="start-jsonp">发送请求</button>
+<button id="start-stream">发送请求</button>
 <div id="result2"></div>
 
 <script>
-	// firefox正常，chrome只是最后才输出，ie拒绝访问
+	//long polling
+	var btn = document.querySelector("#start-polling"), counter = 1;
+	var poll = function() {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', "http://localhost:3000/poll/"+counter, true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4) {
+				var res = document.querySelector("#result");
+				res.innerHTML += xhr.responseText + "<br>";
+				if(++counter <= 5){
+					poll();
+				} else {
+					counter = 1;
+				}
+			}
+		}
+		xhr.send(null);
+	}
+	btn.onclick = function(){
+		document.querySelector("#result").innerHTML = "";
+		poll();
+	};
+
+	//stream
+	var btn2 = document.querySelector("#start-stream");
+	btn2.onclick = function(){
+		var client = createClient("http://localhost:3000/stream", function(data){
+			document.querySelector("#result2").innerHTML += "Received:"+data+"<br>";
+		}, function(data){
+			document.querySelector("#result2").innerHTML += "Done!";
+		});
+	}
 	function createClient(url, process, finished){
 		var xhr = new XMLHttpRequest(), received = 0;
 		xhr.open('GET', url, true);
@@ -16,8 +47,6 @@
 			if(xhr.readyState == 3){
 				result = xhr.responseText.slice(received);
 				received += result.length;
-				console.log(received);
-
 				process(result);
 			} else if(xhr.readyState == 4) {
 				finished(xhr.responseText);
@@ -26,10 +55,4 @@
 		xhr.send(null);
 		return xhr;
 	}
-
-	var client = createClient("http://localhost:3000/stream", function(data){
-		console.log("Received:"+data);
-	}, function(data){
-		console.log("Done!");
-	});
 </script>

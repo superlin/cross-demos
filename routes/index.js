@@ -22,11 +22,19 @@ router.get('/comet', function(req, res, next) {
   res.render('comet', { title: 'comet' });
 });
 
+router.get('/poll/:id', function(req, res, next) {
+  res.writeHead(200, {
+    'Access-Control-Allow-Origin': '*'
+  });
+  setTimeout(function(){
+    res.send("第"+req.params.id+"次获得随机数："+Math.random());
+  }, 1000);
+});
+
 router.get('/stream', function(req, res, next) {
 	res.writeHead(200, {
-		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Credentials': true,
-		'Content-Type': 'text/html' // text/plain时firefox下可行
+    'Access-Control-Allow-Origin': '*',
+		'Content-Type': 'text/html'
 	});
   var count = 0;
   var sid = setInterval(function(){
