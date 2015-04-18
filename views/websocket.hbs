@@ -1,0 +1,68 @@
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<link href="/stylesheets/main.css" rel="stylesheet">
+
+<div id="chat-panel" class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">聊天</h3>
+	</div>
+	<div class="panel-body">
+		<div id="msg-show-div">
+		</div>
+		<div style="height: 30px;">
+			<div id="msg-input-div" class="row" hidden>
+				<div class="col-md-12">
+					<div class="input-group input-group-sm has-success">
+			      <input type="text" class="form-control" id="msg-input" placeholder="请输入消息">
+			      <span class="input-group-btn">
+			        <button class="btn btn-success" type="button" id="send-msg-btn">发送消息</button>
+			      </span>
+			    </div><!-- /input-group -->
+				</div>
+			</div>
+			<div id="user-add-div" class="row">
+				<div class="col-md-12">
+					<div class="input-group input-group-sm has-error">
+			      <input type="text" class="form-control" id="user-name" maxlength="10" placeholder="请输入您的昵称">
+			      <span class="input-group-btn">
+			        <button type="button" class="btn btn-danger" id="add-user-btn">加入聊天</button>
+			      </span>
+			    </div><!-- /input-group -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 聊天模板 -->
+<div id="other-msg-template" hidden>
+	<div class="msg-item other">
+		<img class='pull-left cover-img'>
+		<div style="margin-left: 45px;">
+			<div class="nick-holder"></div>
+			<div>
+				<p class="triangle-isosceles left content-holder">
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="my-msg-template" hidden>
+	<div class="msg-item me">
+		<img class='pull-right cover-img'>
+		<div class='pull-right'>
+			<div style="height: 5px;"></div>
+			<p class="triangle-isosceles right content-holder">
+			</p>
+		</div>
+		<div style="clear: both"></div>
+	</div>
+</div>
+<div id="time-template" hidden>
+	<div class="time-holder">
+		<span class="time-span"></span>
+	</div>
+</div>
+
+<script type="text/javascript" src="/javascripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/main.js"></script>

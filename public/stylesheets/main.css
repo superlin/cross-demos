@@ -1,0 +1,111 @@
+.panel-body{ color: black; }
+.panel{ box-shadow: 1px 1px #CCCCCC; }
+.alert{ margin-bottom: 15px; }
+.popover{ max-width: 500px; }
+.modal-footer{padding: 15px;}
+
+/*其他*/
+.bold{ font-weight: bold; }
+.mcolor{ color: #707070; }
+.h3{ min-width: 50px; }
+.nav-container{ padding: 0 15px; }
+#system-run-time{ text-align: center; }
+.span-title{ font-size: 8px; }
+.span-icon{ font-size: 55px;}
+.span-num{ font-size: 30px;}
+#view_num_added{
+	font-size: 20px;
+	font-weight: bold;
+	color: #468847;
+}
+/*聊天*/
+#msg-show-div{
+	overflow-y: auto;
+	word-wrap: break-word;
+	word-break: normal;
+	border: 1px solid #BED1E1;
+	height: 317px;
+	margin-bottom: 5px;
+}
+#msg-show-div p {
+	display: inline-block;
+	margin-bottom: 0;
+}
+.msg-item{ margin: 2px; }
+.msg-item.other{ margin-right: 45px; }
+.msg-item.me{ margin-left: 45px; }
+.cover-img{ width: 45px; }
+.nick-holder{ margin-left: 12px; }
+.time-span{
+	background-color: rgba(0, 0, 0, 0.11);
+	padding: 3px;
+	border-radius: 4px;
+	font-size: 6px;
+}
+.time-holder{
+	text-align: center;
+	padding: 3px;
+}
+/*聊天气泡*/
+.triangle-isosceles {
+  position: relative;
+  padding: 8px;
+  color: white;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+}
+
+/* Variant : for left/right positioned triangle
+------------------------------------------ */
+
+.triangle-isosceles.left {
+  margin-left:10px;
+  background:#f3961c;
+}
+
+/* Variant : for right positioned triangle
+------------------------------------------ */
+
+.triangle-isosceles.right {
+  margin-right:10px;
+  background: #075698;
+}
+
+/* THE TRIANGLE
+------------------------------------------------------------------------------------------------------------------------------- */
+
+/* creates triangle */
+.triangle-isosceles:after {
+  content:"";
+  position:absolute;
+  bottom:-15px; /* value = - border-top-width - border-bottom-width */
+  left:20px; /* controls horizontal position */
+  border-style:solid;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+/* Variant : left
+------------------------------------------ */
+
+.triangle-isosceles.left:after {
+  top:12px; /* controls vertical position */
+  left:-10px; /* value = - border-left-width - border-right-width */
+  bottom:auto;
+  border-width:5px 10px 5px 0;
+  border-color:transparent #f3961c;
+}
+
+/* Variant : right
+------------------------------------------ */
+
+.triangle-isosceles.right:after {
+  top:12px; /* controls vertical position */
+  right:-10px; /* value = - border-left-width - border-right-width */
+  bottom:auto;
+  left:auto;
+  border-width:5px 0 5px 10px;
+  border-color:transparent #075698;
+}

@@ -78,4 +78,10 @@ router.get('/event-stream', function(req, res, next) {
   }, false);
 });
 
+/*websocket页面*/
+router.get('/websocket', function(req, res, next) {
+  res.render('websocket', { title: 'websocket' });
+});
+
+
 module.exports = router;
