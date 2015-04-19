@@ -1,8 +1,7 @@
 //socket连接
-var socket = io.connect("http://"+location.host);
+var socket = io.connect("http://localhost:3000");
 //连接
 socket.on('connect', function(){
-	socket.emit('monitor', host);
 	socket.emit('chat');
 });
 //进入聊天成功
