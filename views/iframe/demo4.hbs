@@ -1,0 +1,33 @@
+<button>发送消息</button>
+<div class="val"></div>
+<div class="res"></div>
+<script>
+function sendMsg(msg) {
+	var state = 0, data;
+  var frame = document.createElement("frame");
+  var baseProxy = "http://www.otherapp.com:3000/demo4-req";
+  var request = {data:msg};
+  frame.src = baseProxy + "#" + encodeURI(JSON.stringify(request));
+  frame.style.display = "none";
+  frame.onload  = function(){
+  	if(state === 1){
+  		data = frame.contentWindow.name;
+  		document.querySelector('.res').innerHTML = "获得响应：" + data;
+  		//删除iframe
+  		frame.contentWindow.document.write('');
+    	frame.contentWindow.close();
+    	document.body.removeChild(frame);
+  	} else {
+  		state = 1;
+  		frame.src = "http://www.myapp.com:3000/demo4-res";
+  	}
+  };
+  document.body.appendChild(frame);
+}
+
+document.querySelector('button').onclick = function (){
+	var val = Math.random();
+	sendMsg(val);
+	document.querySelector('.val').innerHTML = "请求数据："+val;
+}
+</script>

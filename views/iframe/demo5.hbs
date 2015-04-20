@@ -1,0 +1,15 @@
+<button>发送消息</button>
+<iframe id="otherApp" name="otherApp" src="http://www.otherapp.com:3000/demo5-b" style="display: none"></iframe>
+<div></div>
+<script>
+function handleReceive(event){
+  if(event.origin != "http://www.otherapp.com:3000") return;
+  //处理数据
+  var data = JSON.parse(event.data);
+  document.querySelector('div').innerHTML = "来自iframe的颜色："+data.color;
+
+  var otherAppFrame = window.frames["otherApp"]
+  otherAppFrame.postMessage("ok","http://www.otherapp.com:3000");
+}
+window.addEventListener("message", handleReceive, false);
+</script>

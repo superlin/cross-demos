@@ -1,0 +1,18 @@
+<script>
+function postMessage(msg){
+  var targetWindow = parent.window;
+  targetWindow.postMessage(msg,"*");
+}
+function handleReceive(msg){
+ if(msg.data == "ok"){
+  //要做的事在这
+ }else{
+  //重新发送消息
+  postMessage(JSON.stringify({color:'red'}));
+ }
+}
+window.addEventListener("message", handleReceive, false);
+window.onload = function(){
+  postMessage(JSON.stringify({color:'red'}));
+}
+</script>

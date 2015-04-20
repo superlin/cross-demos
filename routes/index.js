@@ -119,4 +119,27 @@ router.get('/demo3-res-proxy', function(req, res, next) {
   res.render('iframe/demo3-res-proxy', { title: 'cross frame跨域-响应代理' });
 });
 
+/*window.name跨域*/
+router.get('/demo4', function(req, res, next) {
+  res.render('iframe/demo4', { title: 'window.name跨域' });
+});
+
+router.get('/demo4-req', function(req, res, next) {
+  res.render('iframe/demo4-req', { title: 'window.name跨域' });
+});
+
+router.get('/demo4-res', function(req, res, next) {
+  res.send("nothing");
+});
+
+
+/*postMessage跨域*/
+router.get('/demo5', function(req, res, next) {
+  res.render('iframe/demo5', { title: 'postMessage跨域' });
+});
+
+router.get('/demo5-b', function(req, res, next) {
+  res.render('iframe/demo5-b', { title: 'postMessage跨域' });
+});
+
 module.exports = router;
