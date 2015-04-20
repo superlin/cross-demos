@@ -1,0 +1,13 @@
+<div></div>
+<script>
+function getData(data) {
+	document.querySelector('div').innerHTML = "接收到参数："+data;
+   var frame = document.createElement("frame");
+   var baseProxy = "http://www.myapp.com:3000/demo3-res-proxy";
+   //简单的将数据乘以100
+   var request = {data : data*100};
+   frame.src = baseProxy + "#" + encodeURI(JSON.stringify(request));
+   frame.style.display = "none";
+   document.body.appendChild(frame);
+}
+</script>

@@ -1,0 +1,23 @@
+<div></div>
+<script>
+var oldHash = "";
+var target = "http://www.myapp.com:3000/demo2";
+checkMessage = function(){
+	var newHash = window.location.hash;
+	if(newHash.length > 1){
+		newHash = newHash.substring(1, newHash.length);
+		if(newHash != oldHash){
+	 		 oldHash = newHash;
+	 		 var msgs = JSON.parse(newHash);
+	 		 var msg = msgs.msg;
+ 			 sendMessage("Hello father");
+ 			 document.querySelector('div').innerHTML = msg;
+ 		}
+ 	}
+}
+window.setInterval(checkMessage, 1000);
+function sendMessage(msg){
+	var hash = "msg="+ msg;
+	parent.location.href = target + "#" + hash;
+}
+</script>

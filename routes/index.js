@@ -84,4 +84,39 @@ router.get('/websocket', function(req, res, next) {
 });
 
 
+/*子域名跨域*/
+router.get('/demo1', function(req, res, next) {
+  res.render('iframe/demo1', { title: '子域名跨域' });
+});
+
+router.get('/demo1-iframe', function(req, res, next) {
+  res.render('iframe/demo1-iframe', { title: '子域名跨域-iframe' });
+});
+
+/*URL hash跨域*/
+router.get('/demo2', function(req, res, next) {
+  res.render('iframe/demo2', { title: 'URL hash跨域' });
+});
+
+router.get('/demo2-b', function(req, res, next) {
+  res.render('iframe/demo2-b', { title: 'URL hash跨域-iframe' });
+});
+
+/*cross frame跨域*/
+router.get('/demo3', function(req, res, next) {
+  res.render('iframe/demo3', { title: 'cross frame跨域' });
+});
+
+router.get('/demo3-b', function(req, res, next) {
+  res.render('iframe/demo3-b', { title: 'cross frame跨域-目标页面' });
+});
+
+router.get('/demo3-req-proxy', function(req, res, next) {
+  res.render('iframe/demo3-req-proxy', { title: 'cross frame跨域-请求代理' });
+});
+
+router.get('/demo3-res-proxy', function(req, res, next) {
+  res.render('iframe/demo3-res-proxy', { title: 'cross frame跨域-响应代理' });
+});
+
 module.exports = router;

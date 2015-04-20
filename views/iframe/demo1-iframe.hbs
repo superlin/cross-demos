@@ -1,0 +1,8 @@
+<div></div>
+<script>
+document.domain = 'myapp.com';
+function sayHello(str) {
+    document.querySelector('div').innerHTML = str;
+    parent.sayHello('Hello father');
+}
+</script>

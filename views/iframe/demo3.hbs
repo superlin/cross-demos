@@ -1,0 +1,21 @@
+<button>发送消息</button>
+<div></div>
+<iframe name="otherapp" id="otherapp" src="http://www.otherapp.com:3000/demo3-b"></iframe>
+<script>
+function sendMsg(msg) {
+   var frame = document.createElement("frame");
+   var baseProxy = "http://www.otherapp.com:3000/demo3-req-proxy";
+   var request = {frameName:"otherapp", data:msg};
+   frame.src = baseProxy + "#" + encodeURI(JSON.stringify(request));
+   frame.style.display = "none";
+   document.body.appendChild(frame);
+}
+//响应处理函数
+function getResponse(data) {
+	document.querySelector('div').innerHTML = "收到计算结果："+data;
+}
+document.querySelector('button').onclick = function (){
+	sendMsg(Math.random());
+	return false;
+}
+</script>

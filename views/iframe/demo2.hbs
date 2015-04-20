@@ -1,0 +1,14 @@
+<button>发送消息</button>
+<iframe id="ifr" src="http://www.otherapp.com:3000/demo2-b"></iframe>
+<script>
+var target = "http://www.otherapp.com:3000/demo2-b";
+function sendMsg(msg){
+	var data = {msg:msg};
+	var src = target + "#" + JSON.stringify(data);
+	document.getElementById('ifr').src = src;
+}
+
+document.querySelector('button').onclick = function (){
+	sendMsg("时间：" + (new Date()));
+}
+</script>
